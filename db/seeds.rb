@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+a = ["violin", "guitarra", "acordeon"]
+
+Course.destroy_all
+a.each do |i|
+  Course.create(
+    name: i, description: "curso de: #{i}"
+  )
+end
