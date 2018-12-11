@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -7,7 +8,7 @@ class OrdersController < ApplicationController
   def show
 
   end
-  
+
   private
 
   def set_order

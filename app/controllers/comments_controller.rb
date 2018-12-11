@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @comment = Comment.new(content: params[:comment][:content])
     @comment.user = current_user
@@ -8,6 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
     if @comment.user == current_user
       @post = @comment.post
       @comment.destroy

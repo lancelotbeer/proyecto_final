@@ -9,14 +9,18 @@
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
-<p>
+
   <strong>Comments:</strong>
   <% @post.comments.each do |comment| %>
-    <p><%= comment.content %>
-    <td><%= link_to 'Destroy', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </p>
+  <br>
+
+    <strong><%= comment.user.name %></strong>
+      <p>
+      <%= comment.content %>
+        <td><%= link_to 'Destroy', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </p>
   <% end %>
-</p>
+
 
 <%= form_with(model: @comment, url: post_comments_path(@post), local: true) do |form| %>
   <% if @comment.errors.any? %>
